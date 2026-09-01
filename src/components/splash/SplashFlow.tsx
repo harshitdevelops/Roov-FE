@@ -21,7 +21,7 @@ const DOT_COLORS = [
 
 const TIMING = {
   /** Boot fade-in, then shift/spread/logo, then brief hold — totals 5s. */
-  bootFadeInMs: 900,
+  bootFadeInMs: 0,
   bootShiftDownMs: 3100,
   logoAppearMs: 2600,
   logoDelayMs: 320,
