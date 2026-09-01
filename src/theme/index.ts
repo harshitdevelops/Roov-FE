@@ -22,6 +22,7 @@ export {
   borderWidth,
   shadows,
   components,
+  brand,
   textStyle,
 } from './globalTheme';
 

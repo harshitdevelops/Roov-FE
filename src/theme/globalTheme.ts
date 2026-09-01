@@ -1,24 +1,20 @@
 import type {TextStyle, ViewStyle} from 'react-native';
 import {font, fontWeight, getFontStyle} from './fonts';
 
-// ---------------------------------------------------------------------------
-// Colors — HoteloApp natural palette
-// ---------------------------------------------------------------------------
-
 export const colors = {
-  primary: '#6D9773',
-  primaryDark: '#5A8260',
-  primaryLight: '#8BB391',
+  primary: '#799175',
+  primaryDark: '#627A62',
+  primaryLight: '#95AE96',
 
-  secondary: '#0C3B2E',
-  secondaryDark: '#082A21',
-  secondaryLight: '#1A5C48',
+  secondary: '#083023',
+  secondaryDark: '#052018',
+  secondaryLight: '#0C3B2E',
 
-  accent: '#BB8A52',
+  accent: '#B48C5C',
   accentDark: '#9A7042',
   accentLight: '#D4A76A',
 
-  highlight: '#FFBA00',
+  highlight: '#FFBF00',
   highlightDark: '#E6A700',
   highlightLight: '#FFD04D',
 
@@ -27,13 +23,13 @@ export const colors = {
   surfaceMuted: '#F0EFEB',
 
   text: {
-    primary: '#0C3B2E',
+    primary: '#083023',
     secondary: '#BB8A52',
     muted: '#8A8A85',
     inverse: '#FFFFFF',
     onPrimary: '#FFFFFF',
     onSecondary: '#FFFFFF',
-    onHighlight: '#0C3B2E',
+    onHighlight: '#083023',
   },
 
   border: {
@@ -46,24 +42,17 @@ export const colors = {
     success: '#6D9773',
     warning: '#FFBA00',
     error: '#C0392B',
-    info: '#0C3B2E',
+    info: '#083023',
   },
 
-  overlay: 'rgba(12, 59, 46, 0.45)',
-  shadow: 'rgba(12, 59, 46, 0.12)',
+  overlay: 'rgba(8, 48, 35, 0.45)',
+  shadow: 'rgba(8, 48, 35, 0.12)',
   transparent: 'transparent',
 } as const;
 
-// ---------------------------------------------------------------------------
-// Typography
-// ---------------------------------------------------------------------------
-
 export const fontFamily = {
-  /** Primary UI font — LAT Identity */
   body: font.regular,
-  /** Headings & brand — LAT Identity (swap for a serif when added) */
   heading: font.bold,
-  /** Monospace / code (system fallback) */
   mono: 'Courier',
 } as const;
 
@@ -180,10 +169,6 @@ export const typography = {
   },
 } as const satisfies Record<string, TextStyle>;
 
-// ---------------------------------------------------------------------------
-// Layout tokens
-// ---------------------------------------------------------------------------
-
 export const spacing = {
   none: 0,
   xxs: 2,
@@ -242,10 +227,6 @@ export const shadows = {
     elevation: 8,
   },
 } as const satisfies Record<string, ViewStyle>;
-
-// ---------------------------------------------------------------------------
-// Component presets
-// ---------------------------------------------------------------------------
 
 export const components = {
   screen: {
@@ -367,12 +348,19 @@ export const components = {
   },
 } as const;
 
-// ---------------------------------------------------------------------------
-// Global theme object
-// ---------------------------------------------------------------------------
+export const brand = {
+  splashBackground: colors.secondary,
+  appIconSize: {
+    sm: 48,
+    md: 80,
+    lg: 120,
+    xl: 200,
+  },
+} as const;
 
 export const globalTheme = {
   colors,
+  brand,
   fontFamily,
   fontWeights,
   fontSize,
@@ -391,7 +379,6 @@ export type ThemeColors = typeof colors;
 export type ThemeTypography = typeof typography;
 export type ThemeSpacing = typeof spacing;
 
-/** Helper to pick a typography variant with optional color override */
 export function textStyle(
   variant: TypographyVariant,
   overrides?: TextStyle,
