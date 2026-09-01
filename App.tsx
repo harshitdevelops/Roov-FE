@@ -1,48 +1,40 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- *
- * @format
- */
-
-import {StatusBar, StyleSheet, View, Image, Text} from 'react-native';
+import {useCallback, useState} from 'react';
+import {StatusBar, StyleSheet, View} from 'react-native';
 import {SafeAreaProvider} from 'react-native-safe-area-context';
-import {images} from './src/assets/images';
-import {brand, colors, font, typography} from './src/theme';
+import {SplashFlow} from './src/components/splash/SplashFlow';
+import {HomeScreen} from './src/screens/HomeScreen';
+import {brand} from './src/theme';
+
+type AppPhase = 'splash' | 'home';
 
 function App() {
+  const [phase, setPhase] = useState<AppPhase>('splash');
+  const handleSplashFinish = useCallback(() => {
+    setPhase('home');
+  }, []);
+
   return (
     <SafeAreaProvider>
-      <StatusBar barStyle="light-content" />
-      <View style={styles.container}>
-        <Image
-          source={images.appIcon}
-          style={styles.appIcon}
-          accessibilityLabel="Roov app icon"
-        />
-        <Text style={styles.appName}>
-          Singapore
-        </Text>
+      <StatusBar
+        barStyle={phase === 'splash' ? 'light-content' : 'dark-content'}
+      />
+      <View style={styles.root}>
+        {phase === 'home' ? <HomeScreen /> : null}
+        {phase === 'splash' ? (
+          <SplashFlow onFinish={handleSplashFinish} style={styles.splash} />
+        ) : null}
       </View>
     </SafeAreaProvider>
   );
 }
 
 const styles = StyleSheet.create({
-  container: {
+  root: {
     flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
-    backgroundColor: brand.splashBackground,
+    backgroundColor: brand.splashOverlay,
   },
-  appIcon: {
-    width: brand.appIconSize.xl,
-    height: brand.appIconSize.xl,
-  },
-  appName: {
-    ...typography.h3,
-    fontFamily: font.regular,
-    color: colors.text.inverse,
+  splash: {
+    ...StyleSheet.absoluteFillObject,
   },
 });
 

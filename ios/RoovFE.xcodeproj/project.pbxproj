@@ -7,15 +7,16 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0017F8ABF34A46CA8C0FCA95 /* LTAIdentity.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 019A5BA9BD104FB3BB9DD42E /* LTAIdentity.ttf */; };
 		0C80B921A6F3F58F76C31292 /* libPods-RoovFE.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5DCACB8F33CDC322A6C60F78 /* libPods-RoovFE.a */; };
 		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		761780ED2CA45674006654EE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 761780EC2CA45674006654EE /* AppDelegate.swift */; };
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
 		B65D606CDBFB8D919026DE7B /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB81A68108700A75B9A /* PrivacyInfo.xcprivacy */; };
-		0017F8ABF34A46CA8C0FCA95 /* LTAIdentity.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 019A5BA9BD104FB3BB9DD42E /* LTAIdentity.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		019A5BA9BD104FB3BB9DD42E /* LTAIdentity.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = LTAIdentity.ttf; path = ../assets/fonts/LTAIdentity.ttf; sourceTree = "<group>"; };
 		13B07F961A680F5B00A75B9A /* RoovFE.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RoovFE.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		13B07FB51A68108700A75B9A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = RoovFE/Images.xcassets; sourceTree = "<group>"; };
 		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = RoovFE/Info.plist; sourceTree = "<group>"; };
@@ -26,7 +27,6 @@
 		761780EC2CA45674006654EE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = RoovFE/AppDelegate.swift; sourceTree = "<group>"; };
 		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = RoovFE/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
-		019A5BA9BD104FB3BB9DD42E /* LTAIdentity.ttf */ = {isa = PBXFileReference; name = "LTAIdentity.ttf"; path = "../assets/fonts/LTAIdentity.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -92,6 +92,15 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		A5581849693A4FF0A201C014 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				019A5BA9BD104FB3BB9DD42E /* LTAIdentity.ttf */,
+			);
+			name = Resources;
+			path = "";
+			sourceTree = "<group>";
+		};
 		BBD78D7AC51CEA395F1C20DB /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -100,15 +109,6 @@
 			);
 			path = Pods;
 			sourceTree = "<group>";
-		};
-		A5581849693A4FF0A201C014 /* Resources */ = {
-			isa = "PBXGroup";
-			children = (
-				019A5BA9BD104FB3BB9DD42E /* LTAIdentity.ttf */,
-			);
-			name = Resources;
-			sourceTree = "<group>";
-			path = "";
 		};
 /* End PBXGroup section */
 

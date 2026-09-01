@@ -350,6 +350,9 @@ export const components = {
 
 export const brand = {
   splashBackground: colors.secondary,
+  splashOverlay: colors.secondaryLight,
+  splashText: '#F1EFE8',
+  splashTagline: 'YOUR PEOPLE. YOUR ROAD. YOUR CHAOS.',
   appIconSize: {
     sm: 48,
     md: 80,
