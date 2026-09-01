@@ -15,9 +15,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "13B07F861A680F5B00A75B9A"
-               BuildableName = "RoovFE.app"
-               BlueprintName = "RoovFE"
-               ReferencedContainer = "container:RoovFE.xcodeproj">
+               BuildableName = "Roov.app"
+               BlueprintName = "Roov"
+               ReferencedContainer = "container:Roov.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -33,9 +33,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "00E356ED1AD99517003FC87E"
-               BuildableName = "RoovFETests.xctest"
-               BlueprintName = "RoovFETests"
-               ReferencedContainer = "container:RoovFE.xcodeproj">
+               BuildableName = "RoovTests.xctest"
+               BlueprintName = "RoovTests"
+               ReferencedContainer = "container:Roov.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
@@ -55,9 +55,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "13B07F861A680F5B00A75B9A"
-            BuildableName = "RoovFE.app"
-            BlueprintName = "RoovFE"
-            ReferencedContainer = "container:RoovFE.xcodeproj">
+            BuildableName = "Roov.app"
+            BlueprintName = "Roov"
+            ReferencedContainer = "container:Roov.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </LaunchAction>
@@ -72,9 +72,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "13B07F861A680F5B00A75B9A"
-            BuildableName = "RoovFE.app"
-            BlueprintName = "RoovFE"
-            ReferencedContainer = "container:RoovFE.xcodeproj">
+            BuildableName = "Roov.app"
+            BlueprintName = "Roov"
+            ReferencedContainer = "container:Roov.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>

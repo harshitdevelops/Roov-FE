@@ -1,4 +1,4 @@
-package com.roovfe
+package com.roov
 
 import android.app.Application
 import com.facebook.react.PackageList
