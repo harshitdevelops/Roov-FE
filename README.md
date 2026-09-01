@@ -86,6 +86,12 @@ You've successfully run and modified your React Native App. :partying_face:
 
 If you're having issues getting the above steps to work, see the [Troubleshooting](https://reactnative.dev/docs/troubleshooting) page.
 
+# Fonts & attribution
+
+This app uses **LTA Identity** from [OnlineWebFonts](https://www.onlinewebfonts.com), licensed under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/).
+
+Production builds must include visible credit to OnlineWebFonts. See [`assets/fonts/CREDITS.md`](assets/fonts/CREDITS.md) and [`src/constants/attributions.ts`](src/constants/attributions.ts) for the required attribution text.
+
 # Learn More
 
 To learn more about React Native, take a look at the following resources:

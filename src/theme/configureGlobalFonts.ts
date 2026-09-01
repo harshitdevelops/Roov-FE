@@ -14,7 +14,7 @@ function patchTextStyle<T extends TextLikeProps>(
   }
 
   const flattened = StyleSheet.flatten(props.style) ?? {};
-  const {fontFamily, fontWeight, fontStyle} = flattened;
+  const {fontFamily, fontWeight, fontStyle, ...rest} = flattened;
 
   const resolvedFontFamily = resolveFontFamily(
     fontWeight,
@@ -22,14 +22,16 @@ function patchTextStyle<T extends TextLikeProps>(
     fontFamily,
   );
 
-  const patchedStyle = [
-    {fontFamily: resolvedFontFamily, fontWeight: undefined},
-    props.style,
-  ];
-
+  // Rebuild style so fontWeight from StyleSheet.create cannot leak through.
+  // On Android, any fontWeight with a single-weight file forces a system fallback.
   return {
     ...props,
-    style: patchedStyle,
+    style: {
+      ...rest,
+      fontFamily: resolvedFontFamily,
+      fontWeight: '400',
+      fontStyle: fontStyle === 'italic' ? 'italic' : 'normal',
+    },
   };
 }
 

@@ -5,10 +5,10 @@
  * @format
  */
 
-import {StatusBar, StyleSheet, View, Image} from 'react-native';
+import {StatusBar, StyleSheet, View, Image, Text} from 'react-native';
 import {SafeAreaProvider} from 'react-native-safe-area-context';
 import {images} from './src/assets/images';
-import {brand} from './src/theme';
+import {brand, colors, font, typography} from './src/theme';
 
 function App() {
   return (
@@ -20,6 +20,9 @@ function App() {
           style={styles.appIcon}
           accessibilityLabel="Roov app icon"
         />
+        <Text style={styles.appName}>
+          Singapore
+        </Text>
       </View>
     </SafeAreaProvider>
   );
@@ -35,7 +38,11 @@ const styles = StyleSheet.create({
   appIcon: {
     width: brand.appIconSize.xl,
     height: brand.appIconSize.xl,
-    borderRadius: 40,
+  },
+  appName: {
+    ...typography.h3,
+    fontFamily: font.regular,
+    color: colors.text.inverse,
   },
 });
 
