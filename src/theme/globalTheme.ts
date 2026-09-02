@@ -21,6 +21,35 @@ export const colors = {
   background: '#F9F9F7',
   surface: '#FFFFFF',
   surfaceMuted: '#F0EFEB',
+  beige: '#F1E8D5',
+
+  white: '#FFFFFF',
+  black: '#000000',
+
+  grey: {
+    50: '#F7F7F6',
+    100: '#EEEEEC',
+    200: '#E0E0DD',
+    300: '#C8C8C3',
+    400: '#A6A6A0',
+    500: '#84847E',
+    600: '#63635E',
+    700: '#4A4A46',
+    800: '#333331',
+    900: '#1F1F1D',
+  },
+
+  blackAlpha: {
+    100: 'rgba(0, 0, 0, 0.04)',
+    200: 'rgba(0, 0, 0, 0.08)',
+    300: 'rgba(0, 0, 0, 0.16)',
+    400: 'rgba(0, 0, 0, 0.24)',
+    500: 'rgba(0, 0, 0, 0.36)',
+    600: 'rgba(0, 0, 0, 0.48)',
+    700: 'rgba(0, 0, 0, 0.64)',
+    800: 'rgba(0, 0, 0, 0.80)',
+    900: 'rgba(0, 0, 0, 0.92)',
+  },
 
   text: {
     primary: '#083023',

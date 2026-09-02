@@ -7,10 +7,6 @@ type LoginScreenProps = {
   onContinue: () => void;
 };
 
-/**
- * Placeholder — the real login screen is designed in a later pass. It exists so
- * the walkthrough's "Let's Ride" CTA has somewhere to land.
- */
 export function LoginScreen({onContinue}: LoginScreenProps) {
   const insets = useSafeAreaInsets();
 
@@ -20,23 +16,28 @@ export function LoginScreen({onContinue}: LoginScreenProps) {
         styles.container,
         {
           paddingTop: insets.top + 24,
-          paddingBottom: Math.max(insets.bottom, 24),
         },
       ]}>
-      <View style={styles.body}>
-        <Text style={styles.title}>Login</Text>
-        <Text style={styles.subtitle}>
-          Coming soon — this screen gets designed next.
-        </Text>
-      </View>
-
-      <Pressable
-        accessibilityRole="button"
-        accessibilityLabel="Continue"
-        onPress={onContinue}
-        style={styles.button}>
-        <Text style={styles.buttonText}>Continue</Text>
-      </Pressable>
+        <View
+          style={[
+            styles.topBody,
+            {paddingBottom: Math.max(insets.bottom, 24)},
+          ]}>
+          <Text style={styles.title1}>Welcome to Roov</Text>
+        </View>
+        <View
+          style={[
+            styles.bottomBody,
+            {paddingBottom: Math.max(insets.bottom, 24)},
+          ]}>
+          <Text style={styles.title}>Login</Text>
+          <Pressable style={styles.button} onPress={onContinue}>
+            <Text style={styles.buttonTitle}>Proceed</Text>
+          </Pressable>
+          <Text style={styles.disclaimer}>
+            By logging in, you agree to our Terms of Service and Privacy Policy.
+          </Text>
+        </View>
     </View>
   );
 }
