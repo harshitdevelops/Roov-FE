@@ -15,7 +15,7 @@ export const variantStyles: Record<
     container: {
       backgroundColor: colors.transparent,
       borderWidth: borderWidth.thin,
-      borderColor: colors.border.default,
+      borderColor: colors.grey[300],
     },
     pressed: { backgroundColor: colors.blackAlpha[100] },
   },

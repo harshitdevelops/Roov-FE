@@ -34,7 +34,9 @@
 		<true/>
 	</dict>
 	<key>NSLocationWhenInUseUsageDescription</key>
-	<string/>
+	<string>Roov uses your precise location to pick the right country code and show rides near you.</string>
+	<key>NSLocationDefaultAccuracyReduced</key>
+	<false/>
 	<key>RCTNewArchEnabled</key>
 	<true/>
 	<key>UILaunchStoryboardName</key>

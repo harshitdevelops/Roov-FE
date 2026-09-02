@@ -1,7 +1,14 @@
 // Hand-authored one-offs
 export { ArrowLeftIcon } from './ArrowLeftIcon';
+export { ArrowRightIcon } from './ArrowRightIcon';
 export { BikeIcon } from './BikeIcon';
 export { CheckIcon } from './CheckIcon';
+export { ChevronDownIcon } from './ChevronDownIcon';
+export { CloseIcon } from './CloseIcon';
+export { Flag } from './Flag';
+export { GoogleGlyphIcon } from './GoogleGlyphIcon';
+export { LocationIcon } from './LocationIcon';
+export { MailIcon } from './MailIcon';
 
 export type { IconProps } from './types';
 
