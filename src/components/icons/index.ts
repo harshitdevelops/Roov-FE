@@ -19,4 +19,5 @@ export type { MorphIconProps, MorphHandle } from './morphicons';
 
 // Keyline — vendored stroke glyphs, namespaced to avoid name clashes:
 //   <Keyline.SearchIcon />
-export * as Keyline from './keyline';
+import * as Keyline from './keyline';
+export { Keyline };
