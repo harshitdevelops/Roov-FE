@@ -1,11 +1,19 @@
-import {useCallback, useEffect, useRef, useState} from 'react';
-import {Animated, Easing, Pressable, StyleProp, Text, View} from 'react-native';
-import FastImage, {ImageStyle} from '@d11/react-native-fast-image';
-import {useSafeAreaInsets} from 'react-native-safe-area-context';
-import {ArrowLeftIcon, BikeIcon} from '../../components/icons';
-import {colors} from '../../theme';
-import {WALKTHROUGH_STEPS, WALKTHROUGH_TITLE_LEAD} from './steps';
-import {styles, TITLE_LINE_HEIGHT} from './styles';
+import { useCallback, useEffect, useRef, useState } from 'react';
+import {
+  Animated,
+  Easing,
+  Pressable,
+  StyleProp,
+  Text,
+  View,
+} from 'react-native';
+import FastImage, { ImageStyle } from '@d11/react-native-fast-image';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
+import { ArrowLeftIcon, BikeIcon } from '../../components/icons';
+import { useTranslation } from '../../i18n';
+import { colors } from '../../theme';
+import { WALKTHROUGH_STEPS } from './steps';
+import { styles, TITLE_LINE_HEIGHT } from './styles';
 
 const EASE = Easing.bezier(0.22, 1, 0.36, 1);
 const LAST_STEP = WALKTHROUGH_STEPS.length - 1;
@@ -15,10 +23,12 @@ type WalkthroughScreenProps = {
   onFinish: () => void;
 };
 
-export function WalkthroughScreen({onFinish}: WalkthroughScreenProps) {
+export function WalkthroughScreen({ onFinish }: WalkthroughScreenProps) {
   const insets = useSafeAreaInsets();
+  const { t } = useTranslation();
   const [step, setStep] = useState(0);
   const isLast = step === LAST_STEP;
+  const stepKey = WALKTHROUGH_STEPS[step].key;
   const media = WALKTHROUGH_STEPS[step].media;
 
   // The GIF's own loop metadata is infinite, so FastImage/its native
@@ -54,7 +64,7 @@ export function WalkthroughScreen({onFinish}: WalkthroughScreenProps) {
           easing: EASE,
           useNativeDriver: true,
         }),
-      ]).start(({finished}) => {
+      ]).start(({ finished }) => {
         if (!finished) {
           return;
         }
@@ -106,21 +116,23 @@ export function WalkthroughScreen({onFinish}: WalkthroughScreenProps) {
           paddingTop: insets.top + 8,
           paddingBottom: Math.max(insets.bottom, 20) + 8,
         },
-      ]}>
+      ]}
+    >
       <View style={styles.headerRow}>
         <View style={styles.headerLeft}>
           <View style={styles.titleRow}>
-            <Text style={styles.title}>{WALKTHROUGH_TITLE_LEAD} </Text>
+            <Text style={styles.title}>{t('walkthrough.titleLead')} </Text>
             <View style={styles.wordClip}>
               <Animated.Text
                 style={[
                   styles.title,
                   {
                     opacity: wordOpacity,
-                    transform: [{translateY: wordTranslateY}],
+                    transform: [{ translateY: wordTranslateY }],
                   },
-                ]}>
-                {WALKTHROUGH_STEPS[step].word}
+                ]}
+              >
+                {t(`walkthrough.${stepKey}.word`)}
               </Animated.Text>
             </View>
           </View>
@@ -130,20 +142,22 @@ export function WalkthroughScreen({onFinish}: WalkthroughScreenProps) {
               styles.description,
               {
                 opacity: wordOpacity,
-                transform: [{translateX: descriptionTranslateX}],
+                transform: [{ translateX: descriptionTranslateX }],
               },
-            ]}>
-            {WALKTHROUGH_STEPS[step].description}
+            ]}
+          >
+            {t(`walkthrough.${stepKey}.description`)}
           </Animated.Text>
         </View>
 
         {!isLast ? (
           <Pressable
             accessibilityRole="button"
-            accessibilityLabel="Skip walkthrough"
+            accessibilityLabel={t('walkthrough.skip')}
             hitSlop={12}
-            onPress={onFinish}>
-            <Text style={styles.skip}>Skip</Text>
+            onPress={onFinish}
+          >
+            <Text style={styles.skip}>{t('walkthrough.skip')}</Text>
           </Pressable>
         ) : null}
       </View>
@@ -152,7 +166,8 @@ export function WalkthroughScreen({onFinish}: WalkthroughScreenProps) {
         style={styles.body}
         onPress={isLast ? undefined : goNext}
         accessibilityRole={isLast ? undefined : 'button'}
-        accessibilityLabel={isLast ? undefined : 'Next'}>
+        accessibilityLabel={isLast ? undefined : t('walkthrough.next')}
+      >
         {media ? (
           <FastImage
             // FastImage declares its own `ImageStyle` type rather than
@@ -178,22 +193,24 @@ export function WalkthroughScreen({onFinish}: WalkthroughScreenProps) {
         {isLast ? (
           <Pressable
             accessibilityRole="button"
-            accessibilityLabel="Let's Ride"
+            accessibilityLabel={t('walkthrough.letsRide')}
             onPress={onFinish}
-            style={({pressed}) => [styles.cta, pressed && styles.ctaPressed]}>
-            <Text style={styles.ctaText}>Let's Ride</Text>
+            style={({ pressed }) => [styles.cta, pressed && styles.ctaPressed]}
+          >
+            <Text style={styles.ctaText}>{t('walkthrough.letsRide')}</Text>
             <BikeIcon width={22} height={22} color="#FFFFFF" />
           </Pressable>
         ) : (
           <Pressable
             accessibilityRole="button"
-            accessibilityLabel="Next"
+            accessibilityLabel={t('walkthrough.next')}
             hitSlop={8}
             onPress={goNext}
-            style={({pressed}) => [
+            style={({ pressed }) => [
               styles.nextButton,
               pressed && styles.nextButtonPressed,
-            ]}>
+            ]}
+          >
             <View style={styles.flipHorizontal}>
               <ArrowLeftIcon color={colors.text.secondary} />
             </View>

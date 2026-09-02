@@ -12,6 +12,12 @@ export const styles = StyleSheet.create({
     alignItems: 'center',
     backgroundColor: colors.secondaryDark,
   },
+  languageSwitcher: {
+    position: 'absolute',
+    top: 0,
+    right: spacing.xl,
+    zIndex: 3,
+  },
   bottomBody: {
     flex: 6,
     width: '100%',

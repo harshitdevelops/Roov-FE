@@ -1,21 +1,27 @@
-import {useCallback, useState} from 'react';
-import {StatusBar, StyleSheet, View} from 'react-native';
-import {SafeAreaProvider} from 'react-native-safe-area-context';
-import {SplashFlow} from './src/components/splash/SplashFlow';
-import {HomeScreen} from './src/screens/HomeScreen';
-import {LoginScreen} from './src/screens/LoginScreen';
-import {WalkthroughScreen} from './src/screens/WalkthroughScreen';
+import { useCallback, useState } from 'react';
+import { StatusBar, StyleSheet, View } from 'react-native';
+import { SafeAreaProvider } from 'react-native-safe-area-context';
+import { SplashFlow } from './src/components/splash/SplashFlow';
+import { HomeScreen } from './src/screens/HomeScreen';
+import { LoginScreen } from './src/screens/LoginScreen';
+import { WalkthroughScreen } from './src/screens/WalkthroughScreen';
 import {
   hasCompletedWalkthrough,
   markWalkthroughCompleted,
 } from './src/lib/walkthrough';
-import {brand} from './src/theme';
+import { I18nProvider } from './src/i18n';
+import { brand } from './src/theme';
 
 type AppPhase = 'splash' | 'walkthrough' | 'login' | 'home';
 
 const DARK_PHASES: ReadonlySet<AppPhase> = new Set(['splash', 'walkthrough']);
 
-function App() {
+/**
+ * Everything below `I18nProvider`. Lives in its own component because the
+ * provider remounts this subtree on a language change — a full app refresh,
+ * which also resets `phase` back to the splash flow in the new language.
+ */
+function AppShell() {
   const [phase, setPhase] = useState<AppPhase>('splash');
 
   const handleSplashFinish = useCallback(() => {
@@ -37,7 +43,7 @@ function App() {
   }, []);
 
   return (
-    <SafeAreaProvider>
+    <>
       <StatusBar
         barStyle={DARK_PHASES.has(phase) ? 'light-content' : 'dark-content'}
       />
@@ -53,6 +59,16 @@ function App() {
           <SplashFlow onFinish={handleSplashFinish} style={styles.splash} />
         ) : null}
       </View>
+    </>
+  );
+}
+
+function App() {
+  return (
+    <SafeAreaProvider>
+      <I18nProvider>
+        <AppShell />
+      </I18nProvider>
     </SafeAreaProvider>
   );
 }

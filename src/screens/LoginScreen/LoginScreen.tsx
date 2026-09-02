@@ -15,6 +15,7 @@ import {
 } from '../../components/icons';
 import { colors, spacing } from '../../theme';
 import { DEFAULT_COUNTRY, type Country } from '../../constants/countries';
+import { LanguageSwitcher, useTranslation } from '../../i18n';
 import { CountryCodePicker } from './CountryCodePicker';
 import { styles } from './styles';
 
@@ -27,6 +28,7 @@ type LoginScreenProps = {
 
 export function LoginScreen({ onContinue, onRegister }: LoginScreenProps) {
   const insets = useSafeAreaInsets();
+  const { t } = useTranslation();
   const [country, setCountry] = useState<Country>(DEFAULT_COUNTRY);
   const [phone, setPhone] = useState('');
 
@@ -37,11 +39,12 @@ export function LoginScreen({ onContinue, onRegister }: LoginScreenProps) {
       <View
         style={[styles.topBody, { paddingBottom: Math.max(insets.bottom, 24) }]}
       >
+        <LanguageSwitcher style={styles.languageSwitcher} />
         <Text variant="h1" color={colors.white}>
-          Welcome to Roov
+          {t('login.welcome')}
         </Text>
         <Text variant="body" color={colors.accentLight} style={styles.bodyText}>
-          Your People. Your Roads. Your Chaos.
+          {t('login.tagline')}
         </Text>
       </View>
 
@@ -54,10 +57,10 @@ export function LoginScreen({ onContinue, onRegister }: LoginScreenProps) {
         ]}
       >
         <Text variant="h1" color={colors.black}>
-          Login
+          {t('login.title')}
         </Text>
         <Text variant="body" style={styles.subtitle}>
-          Enter your mobile number and we’ll text you a one-time code.
+          {t('login.subtitle')}
         </Text>
 
         <View style={styles.form}>
@@ -65,7 +68,7 @@ export function LoginScreen({ onContinue, onRegister }: LoginScreenProps) {
             keyboardType="phone-pad"
             textContentType="telephoneNumber"
             autoComplete="tel"
-            placeholder="00000 00000"
+            placeholder={t('login.phonePlaceholder')}
             value={phone}
             onChangeText={setPhone}
             maxLength={country.nationalDigits + 4}
@@ -76,7 +79,7 @@ export function LoginScreen({ onContinue, onRegister }: LoginScreenProps) {
           />
 
           <Divider
-            label="Or Use:"
+            label={t('login.divider')}
             spacing={spacing.lg}
             color={colors.grey[400]}
           />
@@ -86,7 +89,7 @@ export function LoginScreen({ onContinue, onRegister }: LoginScreenProps) {
               round
               variant="outline"
               size={48}
-              accessibilityLabel="Continue with email"
+              accessibilityLabel={t('login.emailA11y')}
               icon={
                 <MailIcon width={20} height={20} color={colors.text.primary} />
               }
@@ -95,7 +98,7 @@ export function LoginScreen({ onContinue, onRegister }: LoginScreenProps) {
               round
               variant="outline"
               size={48}
-              accessibilityLabel="Continue with Google"
+              accessibilityLabel={t('login.googleA11y')}
               icon={
                 <GoogleGlyphIcon
                   width={20}
@@ -115,10 +118,10 @@ export function LoginScreen({ onContinue, onRegister }: LoginScreenProps) {
             style={styles.registerRow}
           >
             <Text variant="body" color={colors.text.primary}>
-              New to Roov?{' '}
+              {t('login.newToRoov')}
             </Text>
             <Text variant="body" weight="semiBold" color={colors.text.primary}>
-              Register
+              {t('login.register')}
             </Text>
             <ArrowRightIcon
               width={18}
@@ -128,14 +131,14 @@ export function LoginScreen({ onContinue, onRegister }: LoginScreenProps) {
           </Pressable>
 
           <Button
-            title="Proceed"
+            title={t('login.proceed')}
             size="lg"
             fullWidth
             disabled={!canProceed}
             onPress={onContinue}
           />
           <Text variant="caption" align="center" style={styles.disclaimer}>
-            By logging in, you agree to our Terms of Service and Privacy Policy.
+            {t('login.disclaimer')}
           </Text>
         </View>
       </KeyboardAvoidingView>
