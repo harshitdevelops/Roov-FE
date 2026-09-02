@@ -51,6 +51,13 @@ export const styles = StyleSheet.create({
   },
   body: {
     flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  media: {
+    marginTop: 40,
+    width: '100%',
+    height: '100%',
   },
   footer: {
     minHeight: 72,

@@ -25,8 +25,11 @@ function App() {
   }, []);
 
   const handleWalkthroughFinish = useCallback(() => {
-    markWalkthroughCompleted();
-    setPhase('login');
+    // Persist the completion flag before moving on so the walkthrough does not
+    // resurface on the next launch — this fires for both "Let's Ride" and "Skip".
+    markWalkthroughCompleted().finally(() => {
+      setPhase('login');
+    });
   }, []);
 
   const handleLoginContinue = useCallback(() => {

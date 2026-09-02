@@ -9,8 +9,11 @@ const WALKTHROUGH_COMPLETED_KEY = '@roov/walkthrough-completed/v1';
 export async function hasCompletedWalkthrough(): Promise<boolean> {
   try {
     return (await AsyncStorage.getItem(WALKTHROUGH_COMPLETED_KEY)) === 'true';
-  } catch {
+  } catch (error) {
     // If storage is unreadable, fail open so onboarding still shows.
+    if (__DEV__) {
+      console.warn('[walkthrough] failed to read completion flag', error);
+    }
     return false;
   }
 }
@@ -18,7 +21,10 @@ export async function hasCompletedWalkthrough(): Promise<boolean> {
 export async function markWalkthroughCompleted(): Promise<void> {
   try {
     await AsyncStorage.setItem(WALKTHROUGH_COMPLETED_KEY, 'true');
-  } catch {
+  } catch (error) {
     // Non-fatal: the walkthrough simply shows again on next launch.
+    if (__DEV__) {
+      console.warn('[walkthrough] failed to persist completion flag', error);
+    }
   }
 }

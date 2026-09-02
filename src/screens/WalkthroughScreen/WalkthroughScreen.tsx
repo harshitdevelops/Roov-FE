@@ -1,5 +1,6 @@
 import {useCallback, useEffect, useRef, useState} from 'react';
-import {Animated, Easing, Pressable, Text, View} from 'react-native';
+import {Animated, Easing, Pressable, StyleProp, Text, View} from 'react-native';
+import FastImage, {ImageStyle} from '@d11/react-native-fast-image';
 import {useSafeAreaInsets} from 'react-native-safe-area-context';
 import {ArrowLeftIcon, BikeIcon} from '../../components/icons';
 import {colors} from '../../theme';
@@ -18,6 +19,20 @@ export function WalkthroughScreen({onFinish}: WalkthroughScreenProps) {
   const insets = useSafeAreaInsets();
   const [step, setStep] = useState(0);
   const isLast = step === LAST_STEP;
+  const media = WALKTHROUGH_STEPS[step].media;
+
+  // The GIF's own loop metadata is infinite, so FastImage/its native
+  // decoders would otherwise replay it forever. Freeze on the last frame
+  // once a single play-through elapses.
+  const [hasLooped, setHasLooped] = useState(false);
+  useEffect(() => {
+    setHasLooped(false);
+    if (!media) {
+      return;
+    }
+    const timer = setTimeout(() => setHasLooped(true), media.durationMs);
+    return () => clearTimeout(timer);
+  }, [media, step]);
 
   // Only the second word animates: the outgoing word scrolls up and fades,
   // the incoming word rises from below. The lead word ("Your") stays put.
@@ -137,8 +152,18 @@ export function WalkthroughScreen({onFinish}: WalkthroughScreenProps) {
         style={styles.body}
         onPress={isLast ? undefined : goNext}
         accessibilityRole={isLast ? undefined : 'button'}
-        accessibilityLabel={isLast ? undefined : 'Next'}
-      />
+        accessibilityLabel={isLast ? undefined : 'Next'}>
+        {media ? (
+          <FastImage
+            // FastImage declares its own `ImageStyle` type rather than
+            // reusing RN's, so a shared StyleSheet-created style doesn't
+            // structurally match — cast rather than duplicate the style.
+            style={styles.media as StyleProp<ImageStyle>}
+            source={hasLooped ? media.lastFrame : media.gif}
+            resizeMode={FastImage.resizeMode.contain}
+          />
+        ) : null}
+      </Pressable>
 
       <View style={styles.footer}>
         <View style={styles.dotsRow}>
