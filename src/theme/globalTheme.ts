@@ -1,5 +1,5 @@
-import type {TextStyle, ViewStyle} from 'react-native';
-import {font, fontWeight, getFontStyle} from './fonts';
+import type { TextStyle, ViewStyle } from 'react-native';
+import { font, fontWeight, getFontStyle } from './fonts';
 
 export const colors = {
   primary: '#799175',
@@ -194,7 +194,7 @@ export const typography = {
     ...getFontStyle(fontWeights.medium),
     fontSize: fontSize.base,
     lineHeight: fontSize.base * lineHeight.normal,
-    color: colors.primary,
+    color: colors.secondary,
   },
 } as const satisfies Record<string, TextStyle>;
 
@@ -236,21 +236,21 @@ export const shadows = {
   none: {},
   sm: {
     shadowColor: colors.shadow,
-    shadowOffset: {width: 0, height: 1},
+    shadowOffset: { width: 0, height: 1 },
     shadowOpacity: 1,
     shadowRadius: 3,
     elevation: 2,
   },
   md: {
     shadowColor: colors.shadow,
-    shadowOffset: {width: 0, height: 2},
+    shadowOffset: { width: 0, height: 2 },
     shadowOpacity: 1,
     shadowRadius: 6,
     elevation: 4,
   },
   lg: {
     shadowColor: colors.shadow,
-    shadowOffset: {width: 0, height: 4},
+    shadowOffset: { width: 0, height: 4 },
     shadowOpacity: 1,
     shadowRadius: 12,
     elevation: 8,
@@ -415,5 +415,5 @@ export function textStyle(
   variant: TypographyVariant,
   overrides?: TextStyle,
 ): TextStyle {
-  return {...typography[variant], ...overrides};
+  return { ...typography[variant], ...overrides };
 }
