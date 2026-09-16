@@ -4,31 +4,70 @@ import { borderRadius, colors, spacing, typography } from '../../theme';
 export const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: colors.background,
-  },
-  scrollContent: {
-    paddingHorizontal: spacing.xl,
-    paddingBottom: spacing['3xl'],
-    gap: spacing.xl,
+    position: 'relative',
+    backgroundColor: colors.secondary,
   },
   header: {
+    paddingTop: spacing.base,
+    paddingHorizontal: spacing.base,
+    paddingBottom: 24,
+    zIndex: 2,
+  },
+  headerTopRow: {
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
-    paddingTop: spacing.base,
+  },
+  headerIdentity: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: spacing.md,
+  },
+  backgroundContainer: {
+    position: 'absolute',
+    top: 0,
+    left: 0,
+    right: 0,
+    bottom: 0,
+    zIndex: 0,
+  },
+  sheet: {
+    flex: 1,
+    backgroundColor: colors.background,
+    borderTopLeftRadius: borderRadius['2xl'],
+    borderTopRightRadius: borderRadius['2xl'],
+    overflow: 'hidden',
+    zIndex: 2,
+  },
+  sheetScroll: {
+    flex: 1,
+    paddingTop: spacing.xl,
+  },
+  scrollContent: {
+    gap: spacing.xl,
+    backgroundColor: colors.background,
+    paddingBottom: spacing.xl,
+  },
+  section: {
+    paddingHorizontal: spacing.base,
+    backgroundColor: colors.background,
   },
   pointsPill: {
     flexDirection: 'row',
     alignItems: 'center',
+    alignSelf: 'flex-start',
     gap: spacing.xs,
     backgroundColor: colors.surface,
     borderRadius: borderRadius.full,
     paddingVertical: spacing.xs,
     paddingHorizontal: spacing.md,
+    marginTop: spacing.sm,
   },
   ctaRow: {
     flexDirection: 'row',
     gap: spacing.md,
+    paddingHorizontal: spacing.base,
+    marginTop: spacing.sm,
   },
   ctaCard: {
     flex: 1,

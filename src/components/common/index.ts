@@ -31,5 +31,17 @@ export type { BadgeProps, BadgeVariant } from './Badge';
 export { Avatar } from './Avatar';
 export type { AvatarProps } from './Avatar';
 
+export { AvatarProgressRing } from './AvatarProgressRing';
+export type { AvatarProgressRingProps } from './AvatarProgressRing';
+
+export { NotificationBell } from './NotificationBell';
+export type { NotificationBellProps } from './NotificationBell';
+
+export { ScreenShell } from './ScreenShell';
+export type { ScreenShellProps } from './ScreenShell';
+
 export { Spacer } from './Spacer';
 export type { SpacerProps } from './Spacer';
+
+export { AnimatedCounter } from './AnimatedCounter';
+export type { AnimatedCounterProps } from './AnimatedCounter';

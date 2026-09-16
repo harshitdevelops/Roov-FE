@@ -50,10 +50,19 @@ const en = {
   'otp.verify': 'Verify & Continue',
   'otp.changeNumber': 'Change number',
 
-  'tabs.home': 'Ride Activity',
+  'tabs.home': 'Activity',
+  'tabs.myRides': 'My Rides',
   'tabs.feed': 'Feed',
   'tabs.discover': 'Discover',
   'tabs.profile': 'Profile',
+
+  'myRides.title': 'My Rides',
+  'myRides.hosted': 'Hosted',
+  'myRides.joined': 'Joined',
+  'myRides.empty': "You haven't hosted or joined a ride yet.",
+  'myRides.status.live': 'Live',
+  'myRides.status.upcoming': 'Upcoming',
+  'myRides.status.completed': 'Completed',
 
   'discover.title': 'Discover',
   'discover.emptyTitle': 'Nothing here yet',

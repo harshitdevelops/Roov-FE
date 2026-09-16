@@ -10,7 +10,11 @@ export const MOCK_USER = {
   name: 'Aarav',
   roovPoints: 1240,
   referralCode: 'AARAV24',
+  avatarUri: undefined as string | undefined,
+  profileCompletion: 69,
 };
+
+export const MOCK_UNREAD_NOTIFICATIONS = 3;
 
 export const MOCK_ROOVMATES: readonly MockRider[] = [
   { id: 'r1', name: 'Meera Shah', color: '#B48C5C' },
@@ -26,6 +30,46 @@ export const MOCK_UPCOMING_RIDE = {
   meetingPoint: 'Bandra Bandstand',
   riderCount: 6,
 };
+
+export type MockRide = {
+  id: string;
+  title: string;
+  dateLabel: string;
+  meetingPoint: string;
+  riderCount: number;
+  status: 'live' | 'upcoming' | 'completed';
+  role: 'hosted' | 'joined';
+};
+
+export const MOCK_MY_RIDES: readonly MockRide[] = [
+  {
+    id: 'ride-1',
+    title: 'Lonavala Ghat Run',
+    dateLabel: 'Sat, 9:00 AM',
+    meetingPoint: 'Bandra Bandstand',
+    riderCount: 6,
+    status: 'upcoming',
+    role: 'hosted',
+  },
+  {
+    id: 'ride-2',
+    title: 'Coastal Sunrise Loop',
+    dateLabel: 'Sun, 6:30 AM',
+    meetingPoint: 'Marine Drive',
+    riderCount: 3,
+    status: 'upcoming',
+    role: 'joined',
+  },
+  {
+    id: 'ride-3',
+    title: 'Midnight Chai Run',
+    dateLabel: '12 Jul, 11:00 PM',
+    meetingPoint: 'Carter Road',
+    riderCount: 9,
+    status: 'completed',
+    role: 'hosted',
+  },
+];
 
 export type MockFeedPost = {
   id: string;

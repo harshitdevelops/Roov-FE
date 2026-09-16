@@ -1,6 +1,5 @@
 import { FlatList, View } from 'react-native';
-import { useSafeAreaInsets } from 'react-native-safe-area-context';
-import { Avatar, Card, Text } from '../../components/common';
+import { Avatar, Card, ScreenShell, Text } from '../../components/common';
 import { Keyline } from '../../components/icons';
 import { useTranslation } from '../../i18n';
 import { colors } from '../../theme';
@@ -54,21 +53,18 @@ function FeedPostCard({ post }: { post: MockFeedPost }) {
 }
 
 export function FeedScreen() {
-  const insets = useSafeAreaInsets();
   const { t } = useTranslation();
 
   return (
-    <View style={[styles.container, { paddingTop: insets.top }]}>
-      <View style={styles.header}>
-        <Text variant="h3">{t('feed.title')}</Text>
-      </View>
-
+    <ScreenShell title={t('feed.title')}>
       <FlatList
         data={MOCK_FEED}
         keyExtractor={item => item.id}
         renderItem={({ item }) => <FeedPostCard post={item} />}
         contentContainerStyle={styles.listContent}
         showsVerticalScrollIndicator={false}
+        bounces={false}
+        overScrollMode="never"
         ListEmptyComponent={
           <View style={styles.emptyState}>
             <Text variant="body" align="center">
@@ -77,6 +73,6 @@ export function FeedScreen() {
           </View>
         }
       />
-    </View>
+    </ScreenShell>
   );
 }

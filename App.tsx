@@ -7,6 +7,7 @@ import { DiscoverScreen } from './src/screens/DiscoverScreen';
 import { FeedScreen } from './src/screens/FeedScreen';
 import { HomeScreen } from './src/screens/HomeScreen';
 import { LoginScreen } from './src/screens/LoginScreen';
+import { MyRidesScreen } from './src/screens/MyRidesScreen';
 import { ProfileScreen } from './src/screens/ProfileScreen';
 import { WalkthroughScreen } from './src/screens/WalkthroughScreen';
 import {
@@ -65,6 +66,9 @@ function AppShell() {
 
   const handleHostRide = useCallback(() => {}, []);
   const handleJoinRide = useCallback(() => {}, []);
+  const handleOpenProfile = useCallback(() => {
+    setActiveTab('profile');
+  }, []);
 
   return (
     <>
@@ -79,8 +83,10 @@ function AppShell() {
                 <HomeScreen
                   onHostRide={handleHostRide}
                   onJoinRide={handleJoinRide}
+                  onOpenProfile={handleOpenProfile}
                 />
               ) : null}
+              {activeTab === 'myRides' ? <MyRidesScreen /> : null}
               {activeTab === 'feed' ? <FeedScreen /> : null}
               {activeTab === 'discover' ? <DiscoverScreen /> : null}
               {activeTab === 'profile' ? (

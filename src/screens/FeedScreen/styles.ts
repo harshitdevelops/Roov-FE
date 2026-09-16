@@ -2,15 +2,6 @@ import { StyleSheet } from 'react-native';
 import { borderWidth, colors, spacing } from '../../theme';
 
 export const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: colors.background,
-  },
-  header: {
-    paddingHorizontal: spacing.xl,
-    paddingTop: spacing.base,
-    paddingBottom: spacing.md,
-  },
   listContent: {
     paddingHorizontal: spacing.xl,
     paddingBottom: spacing['3xl'],

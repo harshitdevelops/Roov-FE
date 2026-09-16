@@ -1,31 +1,74 @@
+import { type ComponentType } from 'react';
 import { Pressable, View } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
-import Compass01Icon from '@hugeicons/core-free-icons/Compass01Icon';
+import CompassIcon from '@hugeicons/core-free-icons/CompassIcon';
 import Home01Icon from '@hugeicons/core-free-icons/Home01Icon';
+import Search01Icon from '@hugeicons/core-free-icons/Search01Icon';
 import UserCircleIcon from '@hugeicons/core-free-icons/UserCircleIcon';
 import UserMultipleIcon from '@hugeicons/core-free-icons/UserMultipleIcon';
 import { Text } from '../../common';
-import { HugeIcon } from '../../icons';
+import {
+  CompassSolidIcon,
+  HomeSolidIcon,
+  HugeIcon,
+  SearchSolidIcon,
+  UserCircleSolidIcon,
+  UsersSolidIcon,
+} from '../../icons';
 import { useTranslation } from '../../../i18n';
 import { colors } from '../../../theme';
 import { styles } from './styles';
 
-export type TabKey = 'home' | 'feed' | 'discover' | 'profile';
+export type TabKey = 'home' | 'myRides' | 'feed' | 'discover' | 'profile';
 
 type TabBarProps = {
   active: TabKey;
   onChange: (tab: TabKey) => void;
 };
 
+type SolidIconProps = { size?: number; color?: string };
+
 const TABS: ReadonlyArray<{
   key: TabKey;
-  labelKey: 'tabs.home' | 'tabs.feed' | 'tabs.discover' | 'tabs.profile';
-  icon: typeof Home01Icon;
+  labelKey:
+    | 'tabs.home'
+    | 'tabs.myRides'
+    | 'tabs.feed'
+    | 'tabs.discover'
+    | 'tabs.profile';
+  outlineIcon: typeof CompassIcon;
+  SolidIcon: ComponentType<SolidIconProps>;
 }> = [
-  { key: 'home', labelKey: 'tabs.home', icon: Home01Icon },
-  { key: 'feed', labelKey: 'tabs.feed', icon: UserMultipleIcon },
-  { key: 'discover', labelKey: 'tabs.discover', icon: Compass01Icon },
-  { key: 'profile', labelKey: 'tabs.profile', icon: UserCircleIcon },
+  {
+    key: 'home',
+    labelKey: 'tabs.home',
+    outlineIcon: Home01Icon,
+    SolidIcon: HomeSolidIcon,
+  },
+  {
+    key: 'myRides',
+    labelKey: 'tabs.myRides',
+    outlineIcon: CompassIcon,
+    SolidIcon: CompassSolidIcon,
+  },
+  {
+    key: 'feed',
+    labelKey: 'tabs.feed',
+    outlineIcon: UserMultipleIcon,
+    SolidIcon: UsersSolidIcon,
+  },
+  {
+    key: 'discover',
+    labelKey: 'tabs.discover',
+    outlineIcon: Search01Icon,
+    SolidIcon: SearchSolidIcon,
+  },
+  {
+    key: 'profile',
+    labelKey: 'tabs.profile',
+    outlineIcon: UserCircleIcon,
+    SolidIcon: UserCircleSolidIcon,
+  },
 ];
 
 export function TabBar({ active, onChange }: TabBarProps) {
@@ -48,12 +91,16 @@ export function TabBar({ active, onChange }: TabBarProps) {
             style={styles.tab}
             onPress={() => onChange(tab.key)}
           >
-            <HugeIcon
-              icon={tab.icon}
-              size={24}
-              color={tintColor}
-              strokeWidth={isActive ? 2 : 1.5}
-            />
+            {isActive ? (
+              <tab.SolidIcon size={24} color={tintColor} />
+            ) : (
+              <HugeIcon
+                icon={tab.outlineIcon}
+                size={24}
+                color={tintColor}
+                strokeWidth={1.5}
+              />
+            )}
             <Text
               variant="caption"
               color={tintColor}

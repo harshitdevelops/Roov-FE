@@ -5,11 +5,17 @@ export { BikeIcon } from './BikeIcon';
 export { CheckIcon } from './CheckIcon';
 export { ChevronDownIcon } from './ChevronDownIcon';
 export { CloseIcon } from './CloseIcon';
+export { CompassSolidIcon } from './CompassSolidIcon';
 export { Flag } from './Flag';
 export { GoogleGlyphIcon } from './GoogleGlyphIcon';
+export { HomeSolidIcon } from './HomeSolidIcon';
 export { LocationIcon } from './LocationIcon';
 export { MailIcon } from './MailIcon';
+export { NotificationBellIcon } from './NotificationBellIcon';
 export { RoovCoinIcon } from './RoovCoinIcon';
+export { SearchSolidIcon } from './SearchSolidIcon';
+export { UserCircleSolidIcon } from './UserCircleSolidIcon';
+export { UsersSolidIcon } from './UsersSolidIcon';
 
 export type { IconProps } from './types';
 
