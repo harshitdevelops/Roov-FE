@@ -9,6 +9,7 @@ export { Flag } from './Flag';
 export { GoogleGlyphIcon } from './GoogleGlyphIcon';
 export { LocationIcon } from './LocationIcon';
 export { MailIcon } from './MailIcon';
+export { RoovCoinIcon } from './RoovCoinIcon';
 
 export type { IconProps } from './types';
 

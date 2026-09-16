@@ -2,13 +2,18 @@ import { useCallback, useState } from 'react';
 import { StatusBar, StyleSheet, View } from 'react-native';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 import { SplashFlow } from './src/components/splash/SplashFlow';
+import { TabBar, type TabKey } from './src/components/navigation';
+import { DiscoverScreen } from './src/screens/DiscoverScreen';
+import { FeedScreen } from './src/screens/FeedScreen';
 import { HomeScreen } from './src/screens/HomeScreen';
 import { LoginScreen } from './src/screens/LoginScreen';
+import { ProfileScreen } from './src/screens/ProfileScreen';
 import { WalkthroughScreen } from './src/screens/WalkthroughScreen';
 import {
   hasCompletedWalkthrough,
   markWalkthroughCompleted,
 } from './src/lib/walkthrough';
+import { clearLoggedIn, isLoggedIn, markLoggedIn } from './src/lib/session';
 import { I18nProvider } from './src/i18n';
 import { brand } from './src/theme';
 
@@ -23,10 +28,17 @@ const DARK_PHASES: ReadonlySet<AppPhase> = new Set(['splash', 'walkthrough']);
  */
 function AppShell() {
   const [phase, setPhase] = useState<AppPhase>('splash');
+  const [activeTab, setActiveTab] = useState<TabKey>('home');
 
   const handleSplashFinish = useCallback(() => {
-    hasCompletedWalkthrough().then(done => {
-      setPhase(done ? 'login' : 'walkthrough');
+    isLoggedIn().then(loggedIn => {
+      if (loggedIn) {
+        setPhase('home');
+        return;
+      }
+      hasCompletedWalkthrough().then(done => {
+        setPhase(done ? 'login' : 'walkthrough');
+      });
     });
   }, []);
 
@@ -39,8 +51,20 @@ function AppShell() {
   }, []);
 
   const handleLoginContinue = useCallback(() => {
-    setPhase('home');
+    markLoggedIn().finally(() => {
+      setActiveTab('home');
+      setPhase('home');
+    });
   }, []);
+
+  const handleLogout = useCallback(() => {
+    clearLoggedIn().finally(() => {
+      setPhase('login');
+    });
+  }, []);
+
+  const handleHostRide = useCallback(() => {}, []);
+  const handleJoinRide = useCallback(() => {}, []);
 
   return (
     <>
@@ -48,7 +72,24 @@ function AppShell() {
         barStyle={DARK_PHASES.has(phase) ? 'light-content' : 'dark-content'}
       />
       <View style={styles.root}>
-        {phase === 'home' ? <HomeScreen /> : null}
+        {phase === 'home' ? (
+          <View style={styles.tabbedRoot}>
+            <View style={styles.tabbedContent}>
+              {activeTab === 'home' ? (
+                <HomeScreen
+                  onHostRide={handleHostRide}
+                  onJoinRide={handleJoinRide}
+                />
+              ) : null}
+              {activeTab === 'feed' ? <FeedScreen /> : null}
+              {activeTab === 'discover' ? <DiscoverScreen /> : null}
+              {activeTab === 'profile' ? (
+                <ProfileScreen onLogout={handleLogout} />
+              ) : null}
+            </View>
+            <TabBar active={activeTab} onChange={setActiveTab} />
+          </View>
+        ) : null}
         {phase === 'login' ? (
           <LoginScreen onContinue={handleLoginContinue} />
         ) : null}
@@ -77,6 +118,12 @@ const styles = StyleSheet.create({
   root: {
     flex: 1,
     backgroundColor: brand.splashOverlay,
+  },
+  tabbedRoot: {
+    flex: 1,
+  },
+  tabbedContent: {
+    flex: 1,
   },
   splash: {
     ...StyleSheet.absoluteFillObject,

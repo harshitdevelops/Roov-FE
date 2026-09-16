@@ -48,10 +48,10 @@ export const variantStyles: Record<
   { container: ViewStyle; text: TextStyle; pressed: ViewStyle; spinner: string }
 > = {
   primary: {
-    container: { backgroundColor: colors.primary },
-    text: { color: colors.text.onPrimary },
-    pressed: { backgroundColor: colors.primaryDark },
-    spinner: colors.text.onPrimary,
+    container: { backgroundColor: colors.secondary },
+    text: { color: colors.text.onSecondary },
+    pressed: { backgroundColor: colors.secondaryDark },
+    spinner: colors.text.onSecondary,
   },
   secondary: {
     container: {

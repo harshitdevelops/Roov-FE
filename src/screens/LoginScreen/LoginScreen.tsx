@@ -20,8 +20,8 @@ import { CountryCodePicker } from './CountryCodePicker';
 import { styles } from './styles';
 
 type LoginScreenProps = {
-  /** Temporary hook into the rest of the app until real auth lands. */
-  onContinue: () => void;
+  /** Fires with the full dialled number once it passes validation. */
+  onContinue: (fullPhone: string) => void;
   /** Opens the registration flow. No-op until that screen exists. */
   onRegister?: () => void;
 };
@@ -135,7 +135,7 @@ export function LoginScreen({ onContinue, onRegister }: LoginScreenProps) {
             size="lg"
             fullWidth
             disabled={!canProceed}
-            onPress={onContinue}
+            onPress={() => onContinue(`${country.dialCode} ${phone}`)}
           />
           <Text variant="caption" align="center" style={styles.disclaimer}>
             {t('login.disclaimer')}

@@ -40,6 +40,72 @@ const en = {
 
   'home.liveRide': 'Live ride',
   'home.riding': '{count} riding',
+
+  'otp.title': 'Verify your number',
+  'otp.subtitle': 'Enter the 6-digit code we sent to {phone}',
+  'otp.codePlaceholder': '000000',
+  'otp.resendPrompt': "Didn't get it? ",
+  'otp.resend': 'Resend code',
+  'otp.resendIn': 'Resend in {seconds}s',
+  'otp.verify': 'Verify & Continue',
+  'otp.changeNumber': 'Change number',
+
+  'tabs.home': 'Ride Activity',
+  'tabs.feed': 'Feed',
+  'tabs.discover': 'Discover',
+  'tabs.profile': 'Profile',
+
+  'discover.title': 'Discover',
+  'discover.emptyTitle': 'Nothing here yet',
+  'discover.emptyHint': "We're still mapping this out — check back soon.",
+
+  'home.greeting': 'Hey {name}',
+  'home.hostRide': 'Host a Ride',
+  'home.joinRide': 'Join a Ride',
+  'home.noLiveRide': 'No live ride right now',
+  'home.noLiveRideHint': 'Host or join one to see the convoy here.',
+  'home.upcoming': 'Upcoming',
+  'home.upcomingEmpty': 'No rides on the calendar yet.',
+  'home.roovMates': 'RoovMates',
+  'home.viewAll': 'View all',
+
+  'hostRide.title': 'Host a Ride',
+  'hostRide.subtitle':
+    'Set the meeting point and share the code with your crew.',
+  'hostRide.nameLabel': 'Ride name',
+  'hostRide.namePlaceholder': 'Weekend Ghat Run',
+  'hostRide.meetingPointLabel': 'Meeting point',
+  'hostRide.meetingPointPlaceholder': 'Pin or search a location',
+  'hostRide.dateTimeLabel': 'Date & time',
+  'hostRide.dateTimePlaceholder': 'Sat, 9:00 AM',
+  'hostRide.create': 'Create Ride',
+  'hostRide.codeGenerated': 'Share this code with your crew',
+  'hostRide.copyCode': 'Copy code',
+  'hostRide.copied': 'Copied!',
+  'hostRide.startRide': 'Start Ride',
+
+  'joinRide.title': 'Join a Ride',
+  'joinRide.subtitle': 'Enter the code your host shared with you.',
+  'joinRide.codeLabel': 'Ride code',
+  'joinRide.codePlaceholder': 'e.g. ROOV42',
+  'joinRide.join': 'Join Ride',
+
+  'feed.title': 'Ride Feed',
+  'feed.kudos': 'Kudos',
+  'feed.empty': 'No rides posted yet. Finish a ride to share it here.',
+
+  'profile.pointsLabel': 'Roov Points',
+  'profile.pointsNote':
+    "Points aren't cash — redeem them for stickers, medals & perks.",
+  'profile.referralLabel': 'Your referral code',
+  'profile.share': 'Share',
+  'profile.medals': 'Medals',
+  'profile.roovMates': 'RoovMates',
+  'profile.settings': 'Settings',
+  'profile.logout': 'Log out',
+
+  'common.back': 'Back',
+  'common.cancel': 'Cancel',
 } as const;
 
 export type TranslationKey = keyof typeof en;
