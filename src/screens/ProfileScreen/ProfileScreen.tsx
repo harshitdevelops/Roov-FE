@@ -67,7 +67,7 @@ export function ProfileScreen({ onLogout }: ProfileScreenProps) {
                 <HugeIcon
                   icon={Share08Icon}
                   size={16}
-                  color={colors.primary}
+                  color={colors.secondary}
                   strokeWidth={1.8}
                 />
               }

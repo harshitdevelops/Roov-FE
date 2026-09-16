@@ -80,11 +80,11 @@ export function HomeScreen({ onHostRide, onJoinRide }: HomeScreenProps) {
               <HugeIcon
                 icon={UserAdd01Icon}
                 size={26}
-                color={colors.primary}
+                color={colors.secondary}
                 strokeWidth={1.8}
               />
             </View>
-            <Text variant="label" color={colors.primary}>
+            <Text variant="label" color={colors.secondary}>
               {t('home.joinRide')}
             </Text>
           </Pressable>

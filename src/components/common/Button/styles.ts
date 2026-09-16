@@ -57,11 +57,11 @@ export const variantStyles: Record<
     container: {
       backgroundColor: colors.transparent,
       borderWidth: borderWidth.medium,
-      borderColor: colors.primary,
+      borderColor: colors.secondary,
     },
-    text: { color: colors.primary },
+    text: { color: colors.secondary },
     pressed: { backgroundColor: colors.blackAlpha[100] },
-    spinner: colors.primary,
+    spinner: colors.secondary,
   },
   dark: {
     container: { backgroundColor: colors.secondary },
@@ -71,9 +71,9 @@ export const variantStyles: Record<
   },
   ghost: {
     container: { backgroundColor: colors.transparent },
-    text: { color: colors.primary },
+    text: { color: colors.secondary },
     pressed: { backgroundColor: colors.blackAlpha[100] },
-    spinner: colors.primary,
+    spinner: colors.secondary,
   },
 };
 
